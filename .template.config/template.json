@@ -11,31 +11,45 @@
   },
   "sourceName": "ModularMonolithTemplate",
   "preferNameDirectory": true,
+  "symbols": {
+    "os": {
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        { "choice": "windows", "description": "Windows" },
+        { "choice": "linux-mac", "description": "Linux or macOS" }
+      ],
+      "defaultValue": "windows",
+      "description": "Select your operating system to apply appropriate configurations"
+    }
+  },
   "postActions": [
     {
-      "description": "Remove Git and VS configuration folders and files",
+      "condition": "os == 'windows'",
+      "description": "Remove Git configuration folders and files for Windows",
       "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
       "args": {
         "executable": "cmd",
-        "args": "/c rmdir /s /q .git .vs & del /q .gitattributes .gitignore README.md"
+        "args": "/c rmdir /s /q .git & del /q .gitattributes .gitignore README.md"
       },
       "manualInstructions": [
         {
-          "text": "Delete .git, .vs, .gitattributes, .gitignore, and README.md manually if not removed."
+          "text": "Delete .git, .gitattributes, .gitignore, and README.md manually if not removed."
         }
       ],
       "continueOnError": true
     },
     {
-      "description": "Remove Git and VS configuration folders and files (Linux/macOS)",
+      "condition": "os == 'linux-mac'",
+      "description": "Remove Git configuration folders and files for Linux/macOS",
       "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
       "args": {
         "executable": "bash",
-        "args": "-c \"rm -rf .git .vs .gitattributes .gitignore README.md\""
+        "args": "-c \"rm -rf .git .gitattributes .gitignore README.md\""
       },
       "manualInstructions": [
         {
-          "text": "Delete .git, .vs, .gitattributes, .gitignore, and README.md manually if not removed."
+          "text": "Delete .git, .gitattributes, .gitignore, and README.md manually if not removed."
         }
       ],
       "continueOnError": true

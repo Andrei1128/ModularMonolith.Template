@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Endpoints\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Handlers\Events\" />
+    <Folder Include="Handlers\Commands\" />
+    <Folder Include="Handlers\Queries\" />
+    <Folder Include="Infrastructure\Persistence\Repositories\" />
+    <Folder Include="Infrastructure\Services\" />
+    <Folder Include="Contracts\" />
+  </ItemGroup>
+
 </Project>
